@@ -1,6 +1,6 @@
 # Demo MCreator Java plugin
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/MCreatpr/net.mcreator.demojavaplugin.DemoJavaPlugin/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/MCreatpr/org.cdc.proxy.DemoJavaPlugin/blob/master/LICENSE)
 
 This repository demonstrates a basic MCreator Java plugin structure. 
 Java plugins only work with MCreator 2022.2 or newer.

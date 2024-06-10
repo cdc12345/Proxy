@@ -10,7 +10,7 @@ repositories {
     flatDir { dirs mcreator_path + '/lib' }
 }
 
-group = 'net.mcreator.demojavaplugin'
+group = 'org.cdc.proxy'
 version = new JsonSlurper().parse(file('src/main/resources/plugin.json'))['info']['version']
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
@@ -38,7 +38,7 @@ dependencies {
 }
 
 tasks.jar {
-    archiveFileName.set("demo-plugin.zip")
+    archiveFileName.set("proxy.zip")
 
     from {
         configurations.export.collect { it.isDirectory() ? it : zipTree(it) }
