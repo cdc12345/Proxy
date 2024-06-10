@@ -5,7 +5,10 @@ import com.google.gson.JsonPrimitive;
 import net.mcreator.preferences.PreferencesEntry;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.EventObject;
 import java.util.function.Consumer;
 
@@ -35,10 +38,42 @@ public class InputEntry extends PreferencesEntry<String> {
         if (pass){
             JPasswordField passwordField = new JPasswordField();
             passwordField.setText(value);
+            passwordField.getDocument().addDocumentListener(new DocumentListener() {
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    fct.accept(null);
+                }
+
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    fct.accept(null);
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    fct.accept(null);
+                }
+            });
             return passwordField;
         } else {
             JTextField jTextField = new JTextField();
             jTextField.setText(value);
+            jTextField.getDocument().addDocumentListener(new DocumentListener() {
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    fct.accept(null);
+                }
+
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    fct.accept(null);
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    fct.accept(null);
+                }
+            });
             return jTextField;
         }
     }
@@ -50,6 +85,7 @@ public class InputEntry extends PreferencesEntry<String> {
 
     @Override
     public void setValueFromJsonElement(JsonElement object) {
+        System.out.println(object.getAsString());
         this.value = object.getAsString();
     }
 

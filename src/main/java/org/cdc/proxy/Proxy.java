@@ -19,9 +19,7 @@ import javax.swing.*;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
@@ -46,6 +44,7 @@ public class Proxy extends JavaPlugin {
 
         addListener(ApplicationLoadedEvent.class, event -> SwingUtilities.invokeLater(() -> {
             initPreference(PreferencesManager.PREFERENCES);
+            PreferencesManager.loadPreferences(PreferencesData.CORE_PREFERENCES_KEY);
         }));
         addListener(MCreatorLoadedEvent.class , event -> SwingUtilities.invokeLater(
                 ()->{
@@ -60,12 +59,12 @@ public class Proxy extends JavaPlugin {
 
     private void initPreference(PreferencesData data){
 
-        data.gradle.addPluginEntry(prefIdentify, ProxyPrefEntries.proxyType);
-        data.gradle.addPluginEntry(prefIdentify,ProxyPrefEntries.proxyHost);
-        data.gradle.addPluginEntry(prefIdentify,ProxyPrefEntries.proxyPort);
+        data.gradle.addEntry( ProxyPrefEntries.proxyType);
+        data.gradle.addEntry(ProxyPrefEntries.proxyHost);
+        data.gradle.addEntry(ProxyPrefEntries.proxyPort);
 
-        data.gradle.addPluginEntry(prefIdentify,ProxyPrefEntries.proxyUser);
-        data.gradle.addPluginEntry(prefIdentify,ProxyPrefEntries.proxyPass);
+        data.gradle.addEntry(ProxyPrefEntries.proxyUser);
+        data.gradle.addEntry(ProxyPrefEntries.proxyPass);
     }
 
     private void initWorkspaceProxyFiles(File workspace){
