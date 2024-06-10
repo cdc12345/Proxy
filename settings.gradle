@@ -1,0 +1,4 @@
+rootProject.name = 'DemoJavaPlugin'
+
+include ":MCreator"
+project(":MCreator").projectDir = file(mcreator_path)
