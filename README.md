@@ -1,36 +1,11 @@
-# Demo MCreator Java plugin
+# Proxy
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/MCreatpr/org.cdc.proxy.DemoJavaPlugin/blob/master/LICENSE)
+此插件的作用用于解决MCreator在中国大陆地区构建难,改配置文件麻烦设计的一个小型插件
 
-This repository demonstrates a basic MCreator Java plugin structure. 
-Java plugins only work with MCreator 2022.2 or newer.
+##### 功能
 
-# Setup
+1. 添加了配置项于"Gradle 与 运行"中
 
-In order for the plugin to work, make a new file called `gradle.properties` with the following contents:
+2. 在工作区启动时自动创建或者修改gradle.properties文件,来引入您的代理配置
 
-```
-mcreator_path=<path to MCreator core Gradle project directory>
-```
-
-# Running MCreator with the plugin
-
-This demo plugin comes with some Gradle tasks to help you with the development of your plugin. 
-
-* `runMCreatorWithPlugin`: Run MCreator with the plugin loaded
-
-There is also IntelliJ IDEA run configuration for this task provided in the repository.
-
-**Make sure to enable Java plugins in MCreator preferences, or the plugin will not be loaded.**
-
-# Testing
-
-We highly recommend to test your plugin by running MCreator's tests with your plugin loaded.
-
-This Gradle project does this for you, you just need to run the `test` task.
-
-There is also IntelliJ IDEA run configuration for this task provided in the repository.
-
-# Exporting
-
-To export the plugin, run `jar` task and find the plugin zip file in `build/libs`.
+3. 在工作区启动时自动修改gradle-wrapper.properties文件来使得gradledist下载老大难问题得到初步解决
