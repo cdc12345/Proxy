@@ -9,6 +9,9 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.EventObject;
 import java.util.function.Consumer;
 
@@ -35,41 +38,19 @@ public class InputEntry extends PreferencesEntry<String> {
 
     @Override
     public JComponent getComponent(Window parent, Consumer<EventObject> fct) {
+        DocumentListener documentListener = (DocumentListener) Proxy.newProxyInstance(this.getClass().getClassLoader(),new Class[] {DocumentListener.class}, (proxy, method, args) -> {
+            fct.accept(null);
+            return null;
+        });
         if (pass){
             JPasswordField passwordField = new JPasswordField();
             passwordField.setText(value);
-            passwordField.getDocument().addDocumentListener(new DocumentListener() {
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                }
-
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                }
-
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    fct.accept(null);
-                }
-            });
+            passwordField.getDocument().addDocumentListener(documentListener);
             return passwordField;
         } else {
             JTextField jTextField = new JTextField();
             jTextField.setText(value);
-            jTextField.getDocument().addDocumentListener(new DocumentListener() {
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                }
-
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                }
-
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    fct.accept(null);
-                }
-            });
+            jTextField.getDocument().addDocumentListener(documentListener);
             return jTextField;
         }
     }
