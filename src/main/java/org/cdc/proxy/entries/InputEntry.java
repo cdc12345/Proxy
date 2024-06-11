@@ -41,12 +41,10 @@ public class InputEntry extends PreferencesEntry<String> {
             passwordField.getDocument().addDocumentListener(new DocumentListener() {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    fct.accept(null);
                 }
 
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    fct.accept(null);
                 }
 
                 @Override
@@ -61,12 +59,10 @@ public class InputEntry extends PreferencesEntry<String> {
             jTextField.getDocument().addDocumentListener(new DocumentListener() {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    fct.accept(null);
                 }
 
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    fct.accept(null);
                 }
 
                 @Override
