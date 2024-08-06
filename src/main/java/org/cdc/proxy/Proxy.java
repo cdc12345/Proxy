@@ -54,7 +54,7 @@ public class Proxy extends JavaPlugin {
                     var file = event.getMCreator().getWorkspace().getFileManager().getWorkspaceFile();
                     String type = ProxyPrefEntries.proxyType.get();
                     this.workspace = file.toPath().getParent();
-                    CompletableFuture.delayedExecutor(3,TimeUnit.SECONDS).execute(()->{
+                    CompletableFuture.delayedExecutor(300,TimeUnit.MILLISECONDS).execute(()->{
                         if (!type.equals("none")){
                             initWorkspaceProxyFiles(type);
                         }

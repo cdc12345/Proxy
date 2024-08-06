@@ -1,8 +1,7 @@
 {
   "id": "proxy",
-  "supportedversions": [
-  ],
   "weight": 0,
+  "supportedversions": [],
   "javaplugin": "org.cdc.proxy.Proxy",
   "info": {
     "name": "Proxy",
